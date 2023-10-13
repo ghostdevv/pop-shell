@@ -119,8 +119,10 @@ function settings_dialog_view(): [AppWidgets, Gtk.Container] {
         margin_top: 10,
     })
 
+    const [MAJOR_GNOME_VERSION] = imports.misc.config.PACKAGE_VERSION.split('.');
+
     const win_label = new Gtk.Label({
-        label: `Show Window Titles ${imports.misc.config.PACKAGE_VERSION}`,
+        label: `Show Window Titles "${MAJOR_GNOME_VERSION}" "${MAJOR_GNOME_VERSION === '44' ? '0x0' : '0x2'}"`,
         xalign: 0.0,
         hexpand: true
     })
