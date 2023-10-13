@@ -6,10 +6,11 @@ import * as lib from 'lib';
 const GLib: GLib = imports.gi.GLib;
 const { spawn } = imports.misc.util;
 
-const GNOME_VERSION = imports.misc.config.PACKAGE_VERSION;
+// Get the major version number, e.g. 44 from 44.5
+const [MAJOR_GNOME_VERSION] = imports.misc.config.PACKAGE_VERSION.split('.');
 
 export var MOTIF_HINTS: string = '_MOTIF_WM_HINTS';
-export var HIDE_FLAGS: string[] = ['0x2', '0x0', GNOME_VERSION === '44' ? '0x0' : '0x2', '0x0', '0x0'];
+export var HIDE_FLAGS: string[] = ['0x2', '0x0', MAJOR_GNOME_VERSION === '44' ? '0x0' : '0x2', '0x0', '0x0'];
 export var SHOW_FLAGS: string[] = ['0x2', '0x0', '0x1', '0x0', '0x0'];
 
 export function get_window_role(xid: string): string | null {
